@@ -1,50 +1,60 @@
-import { NavLink } from 'react-router-dom';
-import {
-  LayoutDashboard,
-  Users,
-  DollarSign,
-  FileText,
-  User2
-} from 'lucide-react';
+import { Home, Users, Settings } from 'lucide-react';
 
-const navigation = [
-  { name: 'Tableau de bord', href: '/', icon: LayoutDashboard },
-  { name: 'Utilisateurs', href: '/utilisateurs', icon: User2 },
-  { name: 'Mot de passe', href: '/mdp', icon: Users },
-  { name: 'Authentification 2F', href: '/auth', icon: DollarSign },
-  { name: 'Roles', href: '/role', icon: FileText },
+interface SidebarProps {
+  isOpen: boolean;
+  currentPage: string;
+  onPageChange: (page: string) => void;
+}
+
+const menuItems = [
+  { id: 'accueil', label: 'Accueil', icon: Home },
+  { id: 'users', label: 'Utilisateurs', icon: Users },
+  { id: 'settings', label: 'Paramètres', icon: Settings }
 ];
 
-export const Sidebar = () => {
+export const Sidebar = ({ isOpen, currentPage, onPageChange }: SidebarProps) => {
   return (
-    <div className="w-64 bg-blue-600 text-white flex flex-col">
-      <div className="h-16 flex items-center justify-center border-b border-yellow-400">
-        <div className="flex items-center space-x-2">
-          <span className="text-xl font-bold text-yellow-400 text-center">Cloudpaie</span>
+    <div 
+      className={`bg-gray-800 text-white transition-all duration-300 ${
+        isOpen ? 'w-64' : 'w-20'
+      }`}
+    >
+      <div className="h-full overflow-y-auto">
+        {/* Logo */}
+        <div className="p-5 border-b border-gray-800">
+          <div className="flex items-center justify-between">
+            {isOpen && (
+              <span className="font-bold text-lg">Cloudpaie</span>
+            )}
+            {!isOpen && (
+              <div className="w-full flex justify-center">
+                <span className="font-bold text-lg">P</span>
+              </div>
+            )}
+          </div>
         </div>
+
+        {/* Menu Items */}
+        <nav className="mt-4 px-2">
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => onPageChange(item.id)}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
+                currentPage === item.id
+                  ? 'bg-gray-600 text-white'
+                  : 'hover:bg-gray-800 text-gray-300'
+              }`}
+              title={!isOpen ? item.label : undefined}
+            >
+              <item.icon className="w-5 h-5 flex-shrink-0" />
+              {isOpen && (
+                <span className="text-sm">{item.label}</span>
+              )}
+            </button>
+          ))}
+        </nav>
       </div>
-
-      <nav className="flex-1 px-3 py-6 space-y-1 overflow-y-auto">
-        {navigation.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.href}
-            end={item.href === '/'}
-            className={({ isActive }) =>
-              `flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-150 ${
-                isActive
-                  ? 'bg-yellow-600 text-white'
-                  : 'text-slate-300 hover:bg-blue-400 hover:text-white'
-              }`
-            }
-          >
-            <item.icon className="w-5 h-5" />
-            <span className="font-medium">{item.name}</span>
-          </NavLink>
-        ))}
-      </nav>
-
-      
     </div>
   );
 }

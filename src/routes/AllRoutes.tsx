@@ -1,18 +1,25 @@
-import { Route, Routes } from "react-router-dom"
-import {Header, Layout, Sidebar} from "../components"
-import { LoginPage } from "../pages/LoginPage"
-import Accueil from "../pages/Accueil"
+import { Layout} from "../components"
+import { useState, type JSX } from "react";
+import HomePage from "../pages/HomePage";
+import UsersPage from "../pages/UsersPage";
+import SettingsPage from "../pages/SettingsPage";
 
 export const AllRoutes = () => {
-    return (
-    <div className="dark:bg-darkbg">
-        <Routes>
-            <Route path="/" element={<LoginPage/>} />
-            <Route path="/header" element={<Header/>} />
-            <Route path="/sidebar" element={<Sidebar />} />
-            <Route path="/layout" element={<Layout />} />
-            <Route path="/accueil" element={<Accueil />} />
-        </Routes>
-    </div>
-  )
+    const [currentPage, setCurrentPage] = useState('accueil');
+
+  const pages: { [key: string]: { component: JSX.Element; title: string } } = {
+    accueil: { component: <HomePage />, title: 'Accueil' },
+    users: { component: <UsersPage />, title: 'Utilisateurs' },
+    settings: { component: <SettingsPage />, title: 'Paramètres' }
+  };
+
+  return (
+    <Layout
+      currentPage={currentPage}
+      currentPageTitle={pages[currentPage].title}
+      onPageChange={setCurrentPage}
+    >
+      {pages[currentPage].component}
+    </Layout>
+  );
 }

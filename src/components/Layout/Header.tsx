@@ -1,24 +1,34 @@
-import { Menu } from 'lucide-react';
+import { Menu} from 'lucide-react';
 
-export const Header = () => {
+interface HeaderProps {
+  sidebarOpen: boolean;
+  currentPageTitle: string;
+  onToggleSidebar: () => void;
+}
+
+export const Header = ({ sidebarOpen, currentPageTitle, onToggleSidebar }: HeaderProps) => {
   return (
-    <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
-      <div className="flex items-center space-x-4 flex-1">
-        <button className="lg:hidden p-2 hover:bg-gray-100 rounded-lg">
-          <Menu className="w-5 h-5 text-gray-600" />
-        </button>
-
-      </div>
-
-      <div className="flex items-center space-x-4">
-
-        <div className="flex items-center space-x-3 pl-4 border-l border-gray-200">
-          <div className="text-right">
-            <p className="text-sm font-medium text-gray-900">Admin User</p>
-            <p className="text-xs text-gray-500">Administrateur</p>
-          </div>
-          <div className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center font-bold text-white">
-            A
+    <header className="bg-white shadow-sm">
+      <div className="flex items-center justify-between px-6 py-4">
+        <div className="flex items-center space-x-4">
+          <button
+            onClick={onToggleSidebar}
+            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            {sidebarOpen ? (
+              <Menu className="w-6 h-6 text-gray-600" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-600" />
+            )}
+          </button>
+          <h1 className="text-xl font-semibold text-gray-800">
+            {currentPageTitle}
+          </h1>
+        </div>
+        
+        <div className="flex items-center space-x-4">
+          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+            <span className="text-white text-sm font-semibold">U</span>
           </div>
         </div>
       </div>

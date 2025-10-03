@@ -4,7 +4,7 @@ import logo from "../assets/images/logo.jpg"
 export const LoginPage = ()=> {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate('/accueil')
+        navigate('/layout')
     }
   return (
     <div className="h-screen bg-gray-100 flex">
@@ -19,10 +19,10 @@ export const LoginPage = ()=> {
               </svg>
             </div>
           </div>
+              <p className="text-lg font-bold text-center text-gray-900 mb-4">Connectez-vous à votre compte</p>
 
           {/* Carte du formulaire */}
           <div className="bg-white rounded-xl shadow-lg p-8">
-              <p className="text-md font-bold text-center text-gray-600 mb-4">Connectez-vous à votre compte</p>
 
             <div className="space-y-8">
               {/* Champ nom d'utilisateur */}
