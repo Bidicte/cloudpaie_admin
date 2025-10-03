@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import {Header, Layout, Sidebar} from "../components"
 import { LoginPage } from "../pages/LoginPage"
+import Accueil from "../pages/Accueil"
 
 export const AllRoutes = () => {
     return (
@@ -10,6 +11,7 @@ export const AllRoutes = () => {
             <Route path="/header" element={<Header/>} />
             <Route path="/sidebar" element={<Sidebar />} />
             <Route path="/layout" element={<Layout />} />
+            <Route path="/accueil" element={<Accueil />} />
         </Routes>
     </div>
   )

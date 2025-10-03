@@ -4,7 +4,7 @@ import logo from "../assets/images/logo.jpg"
 export const LoginPage = ()=> {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate('/layout')
+        navigate('/accueil')
     }
   return (
     <div className="h-screen bg-gray-100 flex">
