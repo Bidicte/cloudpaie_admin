@@ -1,7 +1,5 @@
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import "../../styles/base.css";
-import "../../styles/cloudpaie.css";
 import { useState } from "react";
 
 export default function AppLayout() {

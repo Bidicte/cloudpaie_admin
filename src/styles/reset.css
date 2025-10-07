@@ -5,24 +5,20 @@
   box-sizing: border-box;
 }
 
-/* Normalise les éléments HTML5 */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* Supprime les styles de liste */
 ol, ul {
   list-style: none;
 }
 
-/* Normalise les liens */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Normalise les boutons */
 button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
@@ -35,20 +31,17 @@ button {
   cursor: pointer;
 }
 
-/* Normalise les images */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Normalise les tableaux */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* Supprime les bordures des fieldsets */
 fieldset {
   border: 0;
 }

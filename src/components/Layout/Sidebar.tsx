@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { LayoutGrid } from "lucide-react";
-import "../../styles/base.css";
-import "../../styles/cloudpaie.css";
+import { ChevronDown } from "lucide-react";
 import { modules } from "../../data/modulesData";
 
 export default function Sidebar() {
@@ -45,7 +43,7 @@ export default function Sidebar() {
             className="sidebar__icon__one"
             onClick={() => setShowDropdown(!showDropdown)}
           >
-            <LayoutGrid />
+            <ChevronDown />
           </div>
 
           {/* Dropdown */}
