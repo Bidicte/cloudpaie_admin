@@ -20,7 +20,7 @@
   --primary: var(--primary-300);
   
   /* Couleurs neutres / Gris */
-  --gray-50: #556B82;
+  --gray-50: #7f8c8d;
   --gray-100: #1D2D3D;
   --gray-200: #292A2E;
   --gray-300: #6B6E76;
@@ -52,7 +52,7 @@
   
   /* Couleurs de texte */
   --text-primary: #212529;
-  --text-secondary: #6c757d;
+  --text-secondary: #44546f;
   --text-tertiary: #adb5bd;
   --text-disabled: #dee2e6;
   --text-inverse: #ffffff;

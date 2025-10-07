@@ -94,19 +94,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sidebar__title { font-weight: 600; }
 
-.sidebar nav { padding: 28px; }
+.sidebar nav { 
+  padding: 12px; 
+}
+
 .nav-link {
   display: block;
   padding: 10px 12px;
   border: 1px solid transparent;
-  color: inherit;
+  color: var(--text-secondary);
 }
-.nav-link:hover { border-color: #bbb; }
+.nav-link:hover { 
+  background: var(--gray-50);
+  border-color: var(--primary-100);
+  color: var(--text-primary);
+  border-radius: var(--radius-base);
+}
 .nav-link--active {
   background: var(--primary-100);
   border-color: var(--primary-100);
   color: var(--primary);
   border-left: 2px solid var(--primary);
+  border-left-width: 3px;
+  border-radius: var(--radius-base);
 }
 
 .header {
