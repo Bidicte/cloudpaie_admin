@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
 }
 .sidebar__brand:hover{
-  background-color: var(--primary);
+  background-color: var(--primary-50);
 }
 .sidebar__icon{
     display: flex;
@@ -103,9 +103,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .nav-link:hover { border-color: #bbb; }
 .nav-link--active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
+  background: var(--primary-100);
+  border-color: var(--primary-100);
+  color: var(--primary);
+  border-left: 2px solid var(--primary);
 }
 
 .header {
