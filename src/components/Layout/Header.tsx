@@ -1,36 +1,24 @@
-import { Menu} from 'lucide-react';
+import { PanelLeftClose, User } from "lucide-react";
+import "../../styles/base.css";
+import "../../styles/cloudpaie.css";
 
-interface HeaderProps {
-  sidebarOpen: boolean;
-  currentPageTitle: string;
-  onToggleSidebar: () => void;
+interface HeaderProps{
+  onClose: () => void;
 }
 
-export const Header = ({ sidebarOpen, currentPageTitle, onToggleSidebar }: HeaderProps) => {
+export default function Header({onClose} : HeaderProps) {
   return (
-    <header className="bg-white shadow-sm">
-      <div className="flex items-center justify-between px-6 py-4">
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={onToggleSidebar}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            {sidebarOpen ? (
-              <Menu className="w-6 h-6 text-gray-600" />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-600" />
-            )}
-          </button>
-          <h1 className="text-xl font-semibold text-gray-800">
-            {currentPageTitle}
-          </h1>
+    <header className="header">
+      <div className="header__left">
+          <div onClick={onClose}><PanelLeftClose /></div>
+        <div style={{ fontSize: 14, color: "#666" }}>Espace Collaborateur</div>
+      </div>
+      <div className="header__right">
+        <div className="header__info__user">
+          <div><p>Nom de l'agent</p></div>
+          <div><p>Role</p></div>
         </div>
-        
-        <div className="flex items-center space-x-4">
-          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-            <span className="text-white text-sm font-semibold">U</span>
-          </div>
-        </div>
+        <div className="header__avatar"><User /></div>
       </div>
     </header>
   );

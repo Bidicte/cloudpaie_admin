@@ -1,60 +1,89 @@
-import { Home, Users, Settings } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { LayoutGrid } from "lucide-react";
+import "../../styles/base.css";
+import "../../styles/cloudpaie.css";
+import { modules } from "../../data/modulesData";
 
-interface SidebarProps {
-  isOpen: boolean;
-  currentPage: string;
-  onPageChange: (page: string) => void;
-}
+export default function Sidebar() {
+  // Par défaut, le premier module est sélectionné
+  const [selectedModule, setSelectedModule] = useState<string>(modules[0].name);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-const menuItems = [
-  { id: 'accueil', label: 'Accueil', icon: Home },
-  { id: 'users', label: 'Utilisateurs', icon: Users },
-  { id: 'settings', label: 'Paramètres', icon: Settings }
-];
+  const handleModuleSelect = (moduleName: string) => {
+    setSelectedModule(moduleName);
+    setShowDropdown(false);
+  };
 
-export const Sidebar = ({ isOpen, currentPage, onPageChange }: SidebarProps) => {
+  const activeModule = modules.find((m) => m.name === selectedModule);
+
+  // Fermer le dropdown si on clique ailleurs
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(".sidebar__icon")) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
   return (
-    <div 
-      className={`bg-gray-800 text-white transition-all duration-300 ${
-        isOpen ? 'w-64' : 'w-20'
-      }`}
-    >
-      <div className="h-full overflow-y-auto">
-        {/* Logo */}
-        <div className="p-5 border-b border-gray-800">
-          <div className="flex items-center justify-between">
-            {isOpen && (
-              <span className="font-bold text-lg">Cloudpaie</span>
-            )}
-            {!isOpen && (
-              <div className="w-full flex justify-center">
-                <span className="font-bold text-lg">P</span>
-              </div>
-            )}
+    <aside className="sidebar">
+      <div className="sidebar__brand">
+        <div>
+          <div className="sidebar__kicker">K&D ERP</div>
+          <div className="sidebar__title">
+            {selectedModule}
           </div>
         </div>
 
-        {/* Menu Items */}
-        <nav className="mt-4 px-2">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onPageChange(item.id)}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
-                currentPage === item.id
-                  ? 'bg-gray-600 text-white'
-                  : 'hover:bg-gray-800 text-gray-300'
-              }`}
-              title={!isOpen ? item.label : undefined}
-            >
-              <item.icon className="w-5 h-5 flex-shrink-0" />
-              {isOpen && (
-                <span className="text-sm">{item.label}</span>
-              )}
-            </button>
-          ))}
-        </nav>
+        {/* Icône du menu principal */}
+        <div className="sidebar__icon">
+          <div
+            className="sidebar__icon__one"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <LayoutGrid />
+          </div>
+
+          {/* Dropdown */}
+          {showDropdown && (
+            <div className="dropdown">
+              {modules.map((mod) => (
+                <div
+                  key={mod.name}
+                  className={`dropdown__item ${
+                    mod.name === selectedModule ? "dropdown__item--active" : ""
+                  }`}
+                  onClick={() => handleModuleSelect(mod.name)}
+                >
+                  {mod.name}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+
+      {/* Sous-menu du module sélectionné */}
+      <nav>
+        {activeModule && (
+          activeModule.items.map((it) => (
+            <NavLink
+              key={it.to}
+              to={it.to}
+              end
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "nav-link--active" : ""}`
+              }
+            >
+              {it.label}
+            </NavLink>
+          ))
+        ) }
+      </nav>
+    </aside>
   );
 }

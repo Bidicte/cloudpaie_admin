@@ -1,8 +1,8 @@
-import { AllRoutes } from "./routes/AllRoutes"
+import AppLayout from "./components/Layout/Layout"
 
 function App() {
   return (
-    <AllRoutes />
+    <AppLayout />
   )
 }
 
