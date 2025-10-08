@@ -5,6 +5,7 @@ export const modules = [
     items: [
       { to: "/collaborateurs", label: "Collaborateurs" },
       { to: "/taches", label: "Tâches" },
+      { to: "/taches1", label: "Déclarations" },
     ],
   },
   {
@@ -28,3 +29,27 @@ export const modules = [
     ],
   },
 ];
+
+export const dossiers = [
+  {
+    nomModule: "ASCONNECT",
+    pays:"CI"
+  },
+  {
+    nomModule: "CERCIS",
+    pays:"TG"
+  },
+  {
+    nomModule: "JOBO CI",
+    pays:"GH"
+  },
+  {
+    nomModule: "BASE CI NEW CONFIG EMPTY",
+    pays:"GA"
+  },
+  {
+    nomModule: "AGRICULTURAL SOLUTIONS FOR AFRICA (ASFA)",
+    pays:"GC"
+  },
+ 
+]

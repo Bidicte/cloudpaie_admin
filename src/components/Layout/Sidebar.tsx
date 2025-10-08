@@ -30,38 +30,37 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar__brand">
-        <div>
-          <div className="sidebar__kicker">K&D ERP</div>
+        <div className="sidebar_brand_module">
           <div className="sidebar__title">
+          <div className="sidebar__kicker">K&D ERP</div>
             {selectedModule}
           </div>
-        </div>
-
-        {/* Icône du menu principal */}
-        <div className="sidebar__icon">
-          <div
-            className="sidebar__icon__one"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            <ChevronDown />
-          </div>
-
-          {/* Dropdown */}
-          {showDropdown && (
-            <div className="dropdown">
-              {modules.map((mod) => (
-                <div
-                  key={mod.name}
-                  className={`dropdown__item ${
-                    mod.name === selectedModule ? "dropdown__item--active" : ""
-                  }`}
-                  onClick={() => handleModuleSelect(mod.name)}
-                >
-                  {mod.name}
-                </div>
-              ))}
+           {/* Icône du menu principal */}
+          <div className="sidebar__icon">
+            <div
+              className="sidebar__icon__one"
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
+            <ChevronDown className="sidebar_layout_grid"/>
             </div>
-          )}
+
+            {/* Dropdown */}
+            {showDropdown && (
+              <div className="dropdown">
+                {modules.map((mod) => (
+                  <div
+                    key={mod.name}
+                    className={`dropdown__item ${
+                      mod.name === selectedModule ? "dropdown__item--active" : ""
+                    }`}
+                    onClick={() => handleModuleSelect(mod.name)}
+                  >
+                    {mod.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
