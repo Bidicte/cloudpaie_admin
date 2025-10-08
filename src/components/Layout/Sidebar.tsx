@@ -29,11 +29,11 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar">
+      <div className="sidebar__kicker">Cloudpaie</div>
       <div className="sidebar__brand">
         <div className="sidebar_brand_module">
           <div className="sidebar__title">
-          <div className="sidebar__kicker">K&D ERP</div>
-            {selectedModule}
+            <p>{selectedModule}</p>
           </div>
            {/* Icône du menu principal */}
           <div className="sidebar__icon">

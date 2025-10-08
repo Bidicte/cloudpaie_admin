@@ -77,6 +77,10 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar_layout_grid {
   width: 18px;
   height: 18px;
+  color: var(--gray-400);
+}
+.sidebar_layout_grid p{
+  color: var(--gray-400);
 }
 .sidebar__brand {
   padding: 5px 10px;
@@ -85,8 +89,9 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar_brand_module {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border: 2px solid var(--primary-200);
+  padding: 0 10px;
 }
 .sidebar_brand_module:hover {
   border: 2px solid var(--primary-400);
@@ -97,7 +102,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar__kicker {
-  letter-spacing: .2em; text-transform: uppercase; color: #666; font-size: 12px;
+  letter-spacing: .2em; 
+  text-transform: uppercase; 
+  color: #666; 
+  font-size: 12px; 
+  margin-left: 10px; 
+  padding: 10px 20px;
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+.sidebar__title p{
+  color: var(--gray-400);
 }
 .sidebar__title { font-weight: var(--font-weight-semibold); color: var(--gray-200)}
 
@@ -226,11 +241,12 @@ module et sous modules
 
 .dropdown {
   position: absolute;
-  top: 56px;
-  right: 1px;
+  top: 53px;
+  right: 2px;
+  left: 4px;
   background: white;
   z-index: 100;
-  width: 100%;
+  width: 95%;
   animation: fadeIn 0.2s ease;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--primary-100);
@@ -245,7 +261,7 @@ module et sous modules
   animation: fadeIn 0.2s ease;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--primary-100);
-  padding: 5px ;
+  padding: 5px;
   left: 16.2rem;
 }
 
