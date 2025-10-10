@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { modules } from "../../data/modulesData";
+import MyIcon from '../../assets/images/logo.svg';
 
 export default function Sidebar() {
   // Par défaut, le premier module est sélectionné
@@ -15,21 +16,10 @@ export default function Sidebar() {
 
   const activeModule = modules.find((m) => m.name === selectedModule);
 
-  // Fermer le dropdown si on clique ailleurs
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest(".sidebar__icon")) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
 
   return (
     <aside className="sidebar">
-      <div className="sidebar__kicker">Cloudpaie</div>
+      <div className="sidebar__kicker"><img src={MyIcon} alt="" /></div>
       <div className="sidebar__brand">
         <div className="sidebar_brand_module">
           <div className="sidebar__title">
@@ -43,7 +33,6 @@ export default function Sidebar() {
             >
             <ChevronDown className="sidebar_layout_grid"/>
             </div>
-
             {/* Dropdown */}
             {showDropdown && (
               <div className="dropdown">
@@ -63,6 +52,9 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
+
+    <div className="sidebar__menu">Menu</div>
+
 
       {/* Sous-menu du module sélectionné */}
       <nav>

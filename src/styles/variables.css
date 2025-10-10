@@ -18,6 +18,7 @@
   --primary-300: #0070F2;
   --primary-400: #1868DB;
   --primary: var(--primary-300);
+  --primary-cloudpaie: #008aff;
   --primary-opacity: 24,104,219;
   
   /* Couleurs neutres / Gris */
